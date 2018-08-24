@@ -1,4 +1,4 @@
-let users = [{id: '1', name:'Hannah', email: 'hrglasser94@gmail.com'},
+let users = [{id: '1', name:'Hannah', email: 'hg@jangle.com'},
 {id: '2', name:'John', email: 'john@jingle.com'}]
 
 let squabs = [{id: '1', body:'I have so many complaints', userId: '2'},
@@ -9,7 +9,11 @@ const express = require('express');
 let app = express();
 
 let listUsers = (req, res) => {
-    res.send(users);
+    if (req.query.password === 'letmein') {
+        res.send(users);
+    } else {
+        res.end('You shall not pass');
+    }
 }
 
 let squabsByUser = (req, res) => {
